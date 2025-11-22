@@ -1,10 +1,10 @@
-# Code Platform
+# <h1 align="center">Code Platform</h1>
 
 A simple web platform for solving programming challenges, running code in a Docker sandbox, and receiving AI explanations.
 
 ---
 
-## Technologies
+## <h1 align="center">Technologies</h1>
 
 - **Frontend:** HTML + CSS + pure JS
 
@@ -16,7 +16,7 @@ A simple web platform for solving programming challenges, running code in a Dock
 
 ---
 
-## Structure
+## <h1 align="center">Structure</h1>
 
 ```
 code-platform/
