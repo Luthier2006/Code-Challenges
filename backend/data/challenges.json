@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "title": "Soma Simples",
+    "description": "Crie uma função que receba dois números e retorne a soma.",
+    "examples": [
+      { "input": "2, 3", "output": "5" },
+      { "input": "10, 5", "output": "15" }
+    ],
+    "tests": [
+      { "args": [2, 3], "expected": 5 },
+      { "args": [10, 5], "expected": 15 }
+    ]
+  }
+]

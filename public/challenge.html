@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Desafio</title>
+
+  <style>
+    body { font-family: Arial; }
+    textarea {
+      width: 100%; height: 200px; margin-top: 10px;
+      border: 1px solid #ccc; border-radius: 5px;
+      font-family: monospace; padding: 10px;
+    }
+    pre {
+      background: #eee; padding: 10px; border-radius: 5px;
+    }
+  </style>
+
+  <script>
+    let challenge;
+
+    async function loadChallenge() {
+      const id = new URLSearchParams(location.search).get("id");
+      const res = await fetch("/api/challenges/" + id);
+      challenge = await res.json();
+
+      document.getElementById("title").textContent = challenge.title;
+      document.getElementById("description").textContent = challenge.description;
+    }
+
+    async function runCode() {
+      const code = document.getElementById("code").value;
+
+      const res = await fetch("/api/run", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          code,
+          args: challenge.tests[0].args
+        })
+      });
+
+      const out = await res.json();
+      document.getElementById("output").textContent = out.output;
+    }
+
+    window.onload = loadChallenge;
+  </script>
+</head>
+
+<body>
+  <h1 id="title"></h1>
+  <p id="description"></p>
+
+  <textarea id="code">// Digite seu código aqui</textarea>
+
+  <button onclick="runCode()">Executar</button>
+
+  <h3>Saída:</h3>
+  <pre id="output"></pre>
+</body>
+</html>
